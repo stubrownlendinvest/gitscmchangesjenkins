@@ -8,7 +8,7 @@ if (env.BRANCH_NAME == "master") {
 
 
 
-    agent any
+    
 
     stages {
         stage('Build'){
