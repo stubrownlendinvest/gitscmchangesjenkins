@@ -20,6 +20,7 @@ pipeline {
         }
         stage('Build & Tests'){
             steps {
+            sh "echo in another stage"
                 
             }
         }
@@ -27,13 +28,25 @@ pipeline {
   post {
       // always, unstable, aborted, failure, success, changed
     success {
+    steps {
+            sh "echo in another stage"
+                
+            }
         
     }
     failure {
         slackSend channel: "#jenkinscitests", message: "Failed to build : ${BRANCH_NAME}"
+        steps {
+            sh "echo in another stage"
+                
+            }
         
     }
     always {
+    steps {
+            sh "echo in another stage"
+                
+            }
         
     }
   }
