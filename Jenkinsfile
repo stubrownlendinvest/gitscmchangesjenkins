@@ -9,11 +9,11 @@ if (env.BRANCH_NAME == "master") {
 
 pipeline {
     agent any
-	slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+	
     stages {
         stage('Setup environment'){
             steps {
-                slackSend channel: "#jenkinscitests", message: "Build Started: ${env.JOB_NAME} ${env.BRANCH_NAME}"
+                slackSend (channel: "#jenkinscitests"color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
 
                
             }
