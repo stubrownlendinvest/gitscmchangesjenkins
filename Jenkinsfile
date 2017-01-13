@@ -11,42 +11,29 @@ pipeline {
     agent any
 
     stages {
-        stage('Build'){
+        stage('Setup environment'){
             steps {
-               sh "ls -lart"
+                slackSend channel: "#jenkinscitests", message: "Build Started: ${env.JOB_NAME} ${env.BRANCH_NAME}"
+
+               
             }
         }
-        stage('More Stuff'){
+        stage('Build & Tests'){
             steps {
-                sh 'echo not doing much'
                 
             }
         }
-        stage('Tests') {
-            steps {
-                sh '''
-                    echo in a multilien section now
-
-ENDOFCOMMANDS
-'''
-        }
     }
-  }
   post {
       // always, unstable, aborted, failure, success, changed
     success {
-        sh "echo was a success"
-    }
-    unstable {
-        echo 'UNSTABLE'
+        
     }
     failure {
-        echo 'FAILED'
+        slackSend channel: "#jenkinscitests", message: "Failed to build : ${BRANCH_NAME}"
         
     }
     always {
-        // notify slack
-        slackSend channel: "#jenkinscitests", message: "Successfully built : ${DOCKER_IMAGE}"
         
     }
   }
