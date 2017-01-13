@@ -7,8 +7,8 @@ if (env.BRANCH_NAME == "master") {
 }
 
 
-
-    
+pipeline {
+    agent any
 
     stages {
         stage('Build'){
@@ -24,7 +24,11 @@ if (env.BRANCH_NAME == "master") {
         }
         stage('Tests') {
             steps {
-                sh "ls -lart"
+                sh '''
+                    echo in a multilien section now
+
+ENDOFCOMMANDS
+'''
         }
     }
   }
@@ -46,4 +50,4 @@ if (env.BRANCH_NAME == "master") {
         
     }
   }
-
+}
