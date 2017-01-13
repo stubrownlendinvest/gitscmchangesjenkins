@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Setup environment'){
             steps {
-                slackSend (channel: "#jenkinscitests"color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                //slackSend (channel: "#jenkinscitests"color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
 
                
             }
