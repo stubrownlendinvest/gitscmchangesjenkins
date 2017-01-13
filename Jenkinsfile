@@ -24,11 +24,7 @@ pipeline {
         }
         stage('Tests') {
             steps {
-                sh '''
-                    echo in a multilien section now
-
-ENDOFCOMMANDS
-'''
+                sh "ls -lart"
         }
     }
   }
