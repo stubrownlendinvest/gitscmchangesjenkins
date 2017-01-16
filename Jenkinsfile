@@ -9,7 +9,7 @@ if (env.BRANCH_NAME == "master") {
 }
 
 
-//pipeline {
+pipeline {
     agent any
 	
     stages {
@@ -52,4 +52,4 @@ if (env.BRANCH_NAME == "master") {
         
     }
   }
-//}
+}
