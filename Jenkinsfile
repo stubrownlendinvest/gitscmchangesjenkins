@@ -1,3 +1,5 @@
+
+
 currentBuild.displayName = "#" + currentBuild.number + " - " + env.BRANCH_NAME
 
 if (env.BRANCH_NAME == "master") {
@@ -7,7 +9,7 @@ if (env.BRANCH_NAME == "master") {
 }
 
 
-pipeline {
+//pipeline {
     agent any
 	
     stages {
@@ -50,4 +52,4 @@ pipeline {
         
     }
   }
-}
+//}
