@@ -7,7 +7,7 @@ if (env.BRANCH_NAME == "master") {
 }
 
 
-pipdeline {
+pipeline {
     agent any
 	
     stages {
