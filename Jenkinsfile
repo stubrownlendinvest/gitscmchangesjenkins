@@ -15,8 +15,8 @@ if (env.BRANCH_NAME == "master") {
     stages {
         stage('Setup environment'){
             steps {
-                slackSend (channel: "#jenkinscitests"color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-
+                
+				slackSend channel: "#jenkinscitests" color: '#439FE0', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
                
             }
         }
