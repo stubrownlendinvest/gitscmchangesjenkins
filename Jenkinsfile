@@ -41,7 +41,7 @@ pipeline {
         
     }
     always {
-    	//slackSend channel: "#jenkinscitests", message: "Allways to build : ${BRANCH_NAME}"
+    	//slackSend channel: "#jenkinscitests", message: "Allways to build : ${env.BRANCH_NAME}"
     	sh "echo hello"
     }
     
