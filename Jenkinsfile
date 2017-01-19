@@ -39,6 +39,7 @@ pipeline {
     failure {
         slackSend channel: '#jenkinscitests', color: '#e04343', message: "Failed Job :  '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
         slackSend channel: '#ci_failed_builds', color: '#e04343', message: "Failed Job :  '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
+       
         
         
     }
