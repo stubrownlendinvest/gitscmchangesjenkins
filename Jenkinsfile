@@ -10,7 +10,8 @@ if (env.BRANCH_NAME == "master") {
 
 
 pipeline {
-    agent any
+    
+    agent any 
 	
     stages {
         stage('Setup environment'){
@@ -30,26 +31,15 @@ pipeline {
   post {
       // always, unstable, aborted, failure, success, changed
     success {
-    steps {
-            sh "echo in another stage"
-                
-            }
-        
+    	slackSend channel: '#jenkinscitests', color: '#439FE0', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
+       
     }
     failure {
         slackSend channel: "#jenkinscitests", message: "Failed to build : ${BRANCH_NAME}"
-        steps {
-            sh "echo in another stage"
-                
-            }
         
     }
     always {
-    steps {
-            sh "echo in another stage"
-                
-            }
-        
-    }
+    
+    
   }
 }
