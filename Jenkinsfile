@@ -31,7 +31,7 @@ pipeline {
   post {
       // always, unstable, aborted, failure, success, changed
     success {
-    	slackSend channel: '#jenkinscitests', color: '#439FE0', message: "Suucesfully completed : Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
+    	slackSend channel: '#jenkinscitests', color: '#43e062', message: "Suucesfully ******* completed : Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
        
     }
     failure {
