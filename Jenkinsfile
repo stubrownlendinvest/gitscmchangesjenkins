@@ -37,11 +37,11 @@ pipeline {
        
     }
     failure {
-        slackSend channel: '#jenkinscitests', color: '#43e062', message: "Failed Job :  '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
+        slackSend channel: '#jenkinscitests', color: '#e04343', message: "Failed Job :  '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
         
     }
     always {
-    	slackSend channel: "#jenkinscitests", message: "Allways to build : ${BRANCH_NAME}"
+    	//slackSend channel: "#jenkinscitests", message: "Allways to build : ${BRANCH_NAME}"
     
     }
     
