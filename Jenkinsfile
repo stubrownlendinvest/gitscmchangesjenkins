@@ -19,7 +19,7 @@ pipeline {
                 
 				//slackSend channel: '#jenkinscitests', color: '#439FE0', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})'"
                
-               sh "sleep 3"
+               sh "sleep 1"
                sh "echo in steps 1"
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
             sh "echo in another step"
             sh "ls -lart"
-            sh "sleep 5"
+            sh "sleep 1"
                 
             }
         }
@@ -35,7 +35,7 @@ pipeline {
   post {
       // always, unstable, aborted, failure, success, changed
     success {
-    	slackSend channel: '#jenkinscitests', color: '#43e062', message: "Successfully built: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' "\n" ' ${env.BUILD_URL} ' (${env.BUILD_URL}) "
+    	slackSend channel: '#jenkinscitests', color: '#43e062', message: "Successfully built: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ${env.BUILD_URL} ' (${env.BUILD_URL}) "
        
     }
     failure {
