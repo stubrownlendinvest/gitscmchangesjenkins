@@ -17,7 +17,7 @@ pipeline {
         stage('Setup environment'){
             steps {
                 
-				slackSend channel: '#jenkinscitests', color: '#439FE0', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})'"
+				//slackSend channel: '#jenkinscitests', color: '#439FE0', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})'"
                sh "echo in steps 1"
             }
         }
@@ -45,6 +45,7 @@ pipeline {
     }
     always {
     	//slackSend channel: "#jenkinscitests", message: "Allways to build : ${env.BRANCH_NAME}"
+    	slackSend channel: '#jenkinscitests', color: '#439FE0', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})'"
     	sh "echo hello"
     }
     
