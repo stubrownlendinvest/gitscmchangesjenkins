@@ -37,19 +37,19 @@ pipeline {
   post {
       // always, unstable, aborted, failure, success, changed
     success {
-    	slackSend channel: '#jenkinscitests', color: '#43e062', message: "Succesfully completed : Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) "
+    	slackSend channel: '#jenkinscitests', color: '#43e062', message: "Successfully built: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) "
        
     }
     failure {
-        slackSend channel: '#jenkinscitests', color: '#e04343', message: "Failed Job :  '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
-        slackSend channel: '#ci_failed_builds', color: '#e04343', message: "Failed Job :  '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
+        slackSend channel: '#jenkinscitests', color: '#e04343', message: "Failed to build: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
+        slackSend channel: '#ci_failed_builds', color: '#e04343', message: "Failed to build: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
        
         
         
     }
     always {
     	//slackSend channel: "#jenkinscitests", message: "Allways to build : ${env.BRANCH_NAME}"
-    	slackSend channel: '#jenkinscitests', color: '#439FE0', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})'"
+    	slackSend channel: '#jenkinscitests', color: '#439FE0', message: "Build Started: '${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})'"
     	sh "echo hello"
     }
     
