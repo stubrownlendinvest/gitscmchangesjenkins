@@ -18,12 +18,14 @@ pipeline {
             steps {
                 
 				slackSend channel: '#jenkinscitests', color: '#439FE0', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}] (${env.BUILD_URL})'"
-               
+               sh "echo in steps 1"
             }
         }
         stage('Build & Tests'){
             steps {
-            sh "echo in another stage"
+            sh "echo in another step"
+            sh "ls -lart"
+            sh "sleep 5"
                 
             }
         }
