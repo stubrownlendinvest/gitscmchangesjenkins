@@ -24,7 +24,7 @@ pipeline {
         stage('Build & Tests'){
             steps {
             sh "echo in another step"
-            sh "ls -lart"
+            sh "lsf -lart"
             sh "sleep 5"
                 
             }
