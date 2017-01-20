@@ -37,11 +37,25 @@ pipeline {
     success {
     	slackSend channel: '#jenkinscitests', color: '#43e062', message: "Successfully built: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' ${env.BUILD_URL} Docker image ${env.BUILD_URL} ${env.BUILD_URL}' "
        
+    
+    
+    
+    
     }
     failure {
         slackSend channel: '#jenkinscitests', color: '#e04343', message: "Failed to build: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
         slackSend channel: '#ci_failed_builds', color: '#e04343', message: "Failed to build: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
        
+        try {
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'MyID', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+                sh("${git} config credential.username ${env.GIT_USERNAME}")
+                sh("${git} config credential.helper '!echo password=\$GIT_PASSWORD; echo'")
+                sh("GIT_ASKPASS=true ${git} push origin --tags")
+            }
+        } finally {
+            sh("${git} config --unset credential.username")
+            sh("${git} config --unset credential.helper")
+        }
         
         
     }
