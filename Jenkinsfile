@@ -33,10 +33,12 @@ pipeline {
         }
         stage('Tagging'){
         steps {
-        
-  			var versions = deployJava.getJREs();
-			print versions;
-}
+        	
+        	sh "git tag -a ${env.BUILD_NUMBER} -m 'Tag Via Jenkins'"
+        	
+  			
+  			
+  			}
         
         }
         
@@ -52,7 +54,7 @@ pipeline {
     
     }
     failure {
-        slackSend channel: '#jenkinscitests', color: '#e04343', message: "Failed to build: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
+        slackSend channel: '#jenkinscitests', color: '#e04343', message: "Failed to build: '${env.JOB_NAME} [${stupefied_carson}]' (${env.BUILD_URL})"
         slackSend channel: '#ci_failed_builds', color: '#e04343', message: "Failed to build: '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
        
     
